@@ -185,19 +185,7 @@ public class BotsLongPollUpdatesHandler : IBotsLongPollUpdatesHandler
 			{
 				attempt_count += 1;
 				ulong delay = Math.Min(_params.BaseRetryDelayMs * ((ulong) Math.Pow(attempt_count, 2)), _params.MaxRetryDelayMs);
-
-				const string message = ex.ToString() + "\nСледующая попытка через: " + delay + "ms";
-
-				if (_logger.IsEnabled(LogLevel.Error))
-				{
-					_logger.LogError(message);
-				}
-
-				if (delay >= _params.MaxRetryDelayMs)
-				{
-					await HandleExceptionAsync(ex, token);
-	 			}
-  
+				await HandleExceptionAsync(ex, token);
 	  			await Thread.Sleep((int) delay);
 			}
 	 	}
