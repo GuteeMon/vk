@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using VkNet.Exception;
 using VkNet.Model;
-using VkNet.Infrastructure;
 
 namespace VkNet.Utils.BotsLongPoll;
 
@@ -29,8 +28,6 @@ public class BotsLongPollUpdatesHandler : IBotsLongPollUpdatesHandler
 	private string? _currentSessionKey;
 
 	private string? _currentServer;
-
- 	private ILogger _logger;
 
 	/// <summary>
 	/// Инициализирует новый экземпляр класса <see cref="BotsLongPollUpdatesHandler" />
